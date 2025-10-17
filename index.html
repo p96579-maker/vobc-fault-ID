@@ -34,7 +34,45 @@
     .toast .meta{font-size:13px;color:#a6b0cf}
     .kvs > div:nth-child(2n){border-bottom:1px dashed #2a3761;padding-bottom:6px;margin-bottom:6px}
     .kvs > div:nth-last-child(-n+2){border-bottom:none;margin-bottom:0;padding-bottom:0}
-  </style>
+  
+/* === Mobile responsive fixes === */
+@supports(padding: max(0px)) {
+  body{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+}
+body{padding-top:constant(safe-area-inset-top);padding-bottom:constant(safe-area-inset-bottom)}
+@media (max-width: 900px){
+  .wrap{max-width:840px;padding:0 14px}
+  .searchbar{grid-template-columns:1fr 1fr;gap:10px}
+  .kvs{grid-template-columns:140px 1fr}
+}
+@media (max-width: 640px){
+  h1{font-size:18px;margin-bottom:12px}
+  .wrap{max-width:560px;padding:0 12px}
+  .searchbar{grid-template-columns:1fr;gap:10px}
+  .searchbar label{font-size:12.5px}
+  .toolbar{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .btn{width:100%}
+  .card{border-radius:14px;padding:12px}
+  .kvs{grid-template-columns:120px 1fr;gap:6px 10px}
+  .pill.apf{font-size:105%;padding:3px 8px}
+  .footer{flex-direction:column;align-items:flex-start;gap:6px}
+}
+
+/* === Anti-overflow for long tokens === */
+.kvs{word-break:break-word;overflow-wrap:anywhere}
+.kvs > div{min-width:0}
+.kvs > div:nth-child(2n){word-break:break-word;overflow-wrap:anywhere}
+.card, .card *{max-width:100%}
+.pill, .pill *{word-break:break-word;overflow-wrap:anywhere}
+code, .font-mono{word-break:break-all;overflow-wrap:anywhere}
+
+/* === Overflow fixes for long tokens (mobile) === */
+.kvs > div{min-width:0}
+.kvs > div:nth-child(2n){overflow-wrap:anywhere;word-break:break-word;white-space:normal}
+.card-title{overflow-wrap:anywhere;word-break:break-word}
+.pill,.font-mono{overflow-wrap:anywhere;word-break:break-word;white-space:normal}
+.wrap{overflow-x:hidden}
+</style>
 </head>
 <body>
 <div class="wrap">
